@@ -3,6 +3,7 @@ title: "HTML5 canvas 两个小程序"
 datePublished: Sun Jan 14 2024 15:53:42 GMT+0000 (Coordinated Universal Time)
 cuid: clrdoem4u000b09l7enj7843z
 slug: html5-canvas
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1709200522851/c945ce94-c76c-49b9-b500-06f9a1d6a0f9.webp
 tags: html5
 
 ---
