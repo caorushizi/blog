@@ -3,6 +3,7 @@ title: "HTML5 canvas 在画布中画出一个时钟"
 datePublished: Sun Jan 14 2024 15:54:14 GMT+0000 (Coordinated Universal Time)
 cuid: clrdofbil000308l18j5p68b0
 slug: html5-canvas-1
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1709200509314/fbf63d12-44ad-4e9f-8dab-47b900741532.webp
 tags: html5
 
 ---
