@@ -3,6 +3,7 @@ title: "Socket.io"
 datePublished: Sun Jan 14 2024 15:56:33 GMT+0000 (Coordinated Universal Time)
 cuid: clrdoiahs000708l182zfbyjf
 slug: socketio
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1709200411018/247f2adf-c27b-4ffc-9cb3-7500ab213d8d.webp
 
 ---
 
