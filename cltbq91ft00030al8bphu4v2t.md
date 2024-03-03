@@ -3,6 +3,7 @@ title: "Vue.js 3.0 Composition APIs 及 3.0 原理剖析"
 datePublished: Sun Mar 03 2024 16:29:13 GMT+0000 (Coordinated Universal Time)
 cuid: cltbq91ft00030al8bphu4v2t
 slug: vuejs-30-composition-apis-30
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1709484516509/6351dcad-49cf-4dc6-ad99-5f6d5a9550d6.png
 
 ---
 
