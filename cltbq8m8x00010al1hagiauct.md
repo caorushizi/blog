@@ -3,6 +3,7 @@ title: "搭建自己的SSR、静态站点生成（SSG）及封装 Vue.js 组件�
 datePublished: Sun Mar 03 2024 16:28:53 GMT+0000 (Coordinated Universal Time)
 cuid: cltbq8m8x00010al1hagiauct
 slug: ssrssg-vuejs
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1709484496810/1d631919-7452-45d8-8522-cdf05ee40d1a.png
 
 ---
 
