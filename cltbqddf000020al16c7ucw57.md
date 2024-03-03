@@ -3,6 +3,7 @@ title: "前端基础知识体系 跳槽大厂必备"
 datePublished: Sun Mar 03 2024 16:32:35 GMT+0000 (Coordinated Universal Time)
 cuid: cltbqddf000020al16c7ucw57
 slug: 5ymn56uv5z656ga55l6kg5l2t57o7ioi3sanvewkpwoguwhewkhw
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1709484835708/2e8def4d-2166-4903-852e-cf5da21b1470.png
 
 ---
 
