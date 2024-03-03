@@ -1,0 +1,873 @@
+---
+title: "掌握shell脚本编程 进阶Linux高手"
+datePublished: Sun Mar 03 2024 16:32:08 GMT+0000 (Coordinated Universal Time)
+cuid: cltbqcse100030aky5fxl5d6p
+slug: shell-linux
+
+---
+
+# **shell 基础**
+
+## **自定义变量**
+
+变量名遵循原则
+
+* 变量是任何字母、数字和下划线组成的字符串，且不能以数字开头
+    
+* 区分字母大小写，例如 Var1 和 var1 是不同的
+    
+* 变量、等号、值中间不能出现任何空格
+    
+
+​
+
+变量引用
+
+* var1=10 等号前后不能有空格
+    
+* echo $var1
+    
+
+```shell
+#!/bin/bash
+
+var1=abc
+
+echo $var1
+```
+
+## **位置变量**
+
+当一个命令或者脚本执行的是哦户，后面可以跟多个参数，我们使用位置参数变量来表示这些参数
+
+| 位置参数变量 | 含义 |
+| --- | --- |
+| $n | n 为数字，$0 代表脚本本身，$1~9代表1−9个参数，10以上的参数需要大括号包含，如9代表1−9个参数，10以上的参数需要大括号包含，如{10} |
+| $@ | 命令行所有参数，但是每个参数区别对待 |
+| $\* | 命令行所有参数，所有参数视为一个整体 |
+| $# | 参数的个数 |
+
+## **环境变量**
+
+简介
+
+* linux 是一个多租户的操作系统，针对不同的用户都会有一个转悠的运行环境
+    
+* 不同用户的专有环境就是一组默认环境变量的组合
+    
+
+​
+
+环境变量的分类
+
+* 对所有用户生效的环境变量 /ect/profile
+    
+* 对特定用户的生效的环境变量 ~/.bashrc 或者 ~/.bash\_profile
+    
+* 练市有效的环境变量 脚本或者命令行使用 export
+    
+
+​
+
+常用的环境变量
+
+| 环境变量 | 含义 |
+| --- | --- |
+| PATH | 命令搜索的路径 |
+| HOME | 用户的家目录的路径 |
+| LOGNAME | 用户登录名 |
+| PWD | 当前所在的路径 |
+| HISTFILE | 历史命令的保存文件 |
+| HISTSIZE | 历史命令保存的最大行数 |
+| HOSTNAME | 主机名 |
+| SHELL | 用户当前使用的 SHELL |
+| PS1 | 以及命令提示符 |
+| TMOUT | 用户和系统交互过程的超时值 |
+| IFS | 系统输入的分隔符 |
+| OFS | 系统输出的分隔符 |
+
+环境变量一般都是大写​
+
+## **管道**
+
+* 将系统上所有的软件包列出来，然后去搜索 Python 相关的软件包
+    
+* 解决方法：使用命令列出系统已有的所有软件包，然后把结果重定向到文件中，然后在文件中搜索 python
+    
+* rpm -qa &gt; all\_soft.txt 在利用 vim 去搜索 python
+    
+
+​
+
+使用管道解决问题
+
+* 列出所有的软件包，然后将结果传递给后续命令处理
+    
+* rpm -qa | grep python | wc -l
+    
+
+​
+
+管道定义
+
+* 将一个命令的输出作为另一个命令的输入
+    
+* 从某种意义上来说，是重定向的简易实现
+    
+
+​
+
+## **退出状态码**
+
+* 所有的 shell 命令都使用退出状态码来告知 shell 它已经执行完毕
+    
+* 退出状态码是一个 0~255 的整数值
+    
+* Linux 提供了一个$?来捕获退出状态码的值
+    
+
+​
+
+![image.png](https://static.ziying.site/yuque_img_upload/a79a1f27-11c9-3e03-9617-c860bdaed068.png align="left")
+
+实践用法
+
+| 状态码 | 含义 |
+| --- | --- |
+| 0 | 命令执行成功的情况 |
+| 非 0 | 不成功的情况 |
+
+## **改变退出状态码 exit 命令**
+
+* 退出状态码是以上一条指令的返回结果为准
+    
+* exit $exit\_code
+    
+* exit 48 或者 exit 125 或者 exit 0
+    
+
+​
+
+## **单引号和双引号有哪些坑**
+
+* 处理变量时，单引号和双引号的区别
+    
+* 处理字符串变量时，单引号和双引号的区别
+    
+* 单引号套用是需要注意那些区别
+    
+* sed 和 awk 中需要注意单双引号的那些差异
+    
+
+​
+
+# **判断和控制**
+
+## **使用 if-then 语句**
+
+```shell
+if command | condition
+then
+	commands
+fi
+```
+
+```shell
+if command | condition
+then
+	commands
+else
+	commands
+fi
+```
+
+## **嵌套 if**
+
+```shell
+if command | condition
+then
+	commands
+elif command | condition
+	commands
+else
+	commands
+fi
+```
+
+## **条件测试 - 数值比较**
+
+![image.png](https://static.ziying.site/yuque_img_upload/e5dd74d2-ad08-3202-b4fb-df8f8d8ed188.png align="left")
+
+* 需要使用方括号包裹条件
+    
+* command 返回 0， 执行 if 中的语句
+    
+* condition true 执行 if 中的语句
+    
+
+![image.png](https://static.ziying.site/yuque_img_upload/c8e53ae3-eafa-31c7-a457-85b35db596bd.png align="left")
+
+## **字符串比较**
+
+![image.png](https://static.ziying.site/yuque_img_upload/89d741d4-ff9c-38d6-93c6-883337960438.png align="left")
+
+## **文件比较**
+
+![image.png](https://static.ziying.site/yuque_img_upload/2e09d430-434f-3d42-bcc1-2401f72e6c36.png align="left")
+
+![image.png](https://static.ziying.site/yuque_img_upload/ff1adc6f-94bb-395c-a0c4-58db408f7714.png align="left")
+
+## **复合条件**
+
+```shell
+var1=56
+var2=23
+var3=89
+
+if [ $var1 -gt $var2 ] && [ $var3 -lt $var3 ];then
+	echo "$var1 < $var2 并且 $var2 > $var3"
+fi
+```
+
+## **if-then 中使用双括号**
+
+* 使用双括号进行算数运算
+    
+
+```shell
+if (( expression )); then
+	command
+fi
+```
+
+![image.png](https://static.ziying.site/yuque_img_upload/96fdc763-79e3-3a02-9056-add05f812220.png align="left")
+
+![image.png](https://static.ziying.site/yuque_img_upload/f0d30c53-2285-3c9d-8022-59ed60ebdb6f.png align="left")
+
+* 双括结构中，变量名引用可以加$，也可以不加
+    
+* 运算符前后可以有空格，也可以没有
+    
+* 可以用于 if、for、while 等循环控制结构中
+    
+* 多个运算符使用逗号分割
+    
+
+​
+
+## **双方括号**
+
+* 双括号结构中，变量名引用必须加$
+    
+* 双方括号\]\]前面必须有空格，\[\[后面也必须有空格
+    
+
+​
+
+# **case 命令**
+
+```shell
+case $var in
+	pattern1)
+  	commands
+    ;;
+  pattern2)
+  	commands
+    ;;
+  *)
+  	commands
+    ;;
+esac
+```
+
+# **for 命令**
+
+```shell
+for vat in list
+do
+	commands
+done
+```
+
+## **for 读取列表值**
+
+```shell
+for i in Beijing Shanghai Nanjing
+do
+	echo ''
+done
+
+for i in {1..20}
+do
+	echo "number is $i"
+done
+```
+
+## **for 循环读取变量的值**
+
+```shell
+IFS=":"
+
+list="Zhangsan Lisi Mike"
+for i in $list
+do
+	echo "number is $i"
+done
+```
+
+## **for 循环从命令执行结果读取值**
+
+```shell
+# 命令替换
+for i in $(ls /opt)
+do
+	echo 'all list'
+done
+```
+
+## **c 语言风格的 for 循环**
+
+```shell
+for (( i=10; i < 50; i++ ))
+do
+	echo 'current'
+done
+```
+
+## **while 循环命令**
+
+```shell
+while command
+do
+	commands
+done
+```
+
+## **until 命令**
+
+```shell
+until command
+do
+	echo "number is $1"
+done
+```
+
+## **控制循环的 break 指令**
+
+break n 退出深层的循环​
+
+## **处理 for 循环的输出**
+
+可以使用重定向和管道输出来对 for 循环的结果进行处理。
+
+# **变量的高级用法**
+
+## **变量的替换**
+
+![image.png](https://static.ziying.site/yuque_img_upload/66e569f0-46ac-3244-bc77-0e8a491ba46e.png align="left")
+
+![image.png](https://static.ziying.site/yuque_img_upload/76e84bfe-8707-3200-bcfc-4aef75a88fac.png align="left")
+
+## **变量的测试**
+
+![image.png](https://static.ziying.site/yuque_img_upload/68be664d-94e7-3455-8934-1f3e1c758201.png align="left")
+
+## **字符串处理**
+
+计算字符串长度
+
+![image.png](https://static.ziying.site/yuque_img_upload/5847b790-4972-3a4d-930c-eba1423dc45a.png align="left")
+
+获取子串在字符串中的索引位置
+
+![image.png](https://static.ziying.site/yuque_img_upload/bdbb0f87-4709-38b3-bb45-8abf74e95a53.png align="left")
+
+获取子串的长度
+
+![image.png](https://static.ziying.site/yuque_img_upload/3ffd53ab-3b7f-3690-b357-fb95c88f54f8.png align="left")
+
+抽取子串
+
+![image.png](https://static.ziying.site/yuque_img_upload/d0948adb-5974-3491-a360-8f5e64d733c0.png align="left")
+
+## **字符串处理完整的脚本**
+
+![image.png](https://static.ziying.site/yuque_img_upload/24e18e84-5dfa-3eaf-b41e-253c906b9373.png align="left")
+
+## **命令替换**
+
+* `command`
+    
+* `$(command)`
+    
+
+​
+
+## **有类型的变量**
+
+* declare 命令和 typeset 命令两者等价
+    
+* declare、typeset 命令都是用来定义变量类型的
+    
+
+![image.png](https://static.ziying.site/yuque_img_upload/fffa5958-3f6a-3ad6-9c5f-aff585f0e780.png align="left")
+
+`declare -a ("a" "b")`
+
+* `+a`取消
+    
+* `-a`设置
+    
+
+## **bash 数学运算 expr**
+
+* `expr $num1 operator $num2`
+    
+* `$(($num1 operator $num2))`
+    
+
+![image.png](https://static.ziying.site/yuque_img_upload/d4040781-244d-30d3-9cf6-4c621502c437.png align="left")
+
+![image.png](https://static.ziying.site/yuque_img_upload/65e778e5-07e4-37ab-ab17-32ef6344e447.png align="left")
+
+## **bash 数学运算之 bc**
+
+* bc 是 bash 内建的运算器，支持浮点数运算
+    
+* 内建变量 scale 可以设置，默认为 0
+    
+
+![image.png](https://static.ziying.site/yuque_img_upload/27a49112-e340-3541-8867-b208e7b939e2.png align="left")
+
+![image.png](https://static.ziying.site/yuque_img_upload/fbface5e-4a18-3bb6-8767-3a14fcb89bea.png align="left")
+
+`echo "24/7" | bc`
+
+# **函数的高级用法**
+
+## **函数的定义和使用**
+
+* Linux Shell 中的函数和大多数编程语言中的函数一样
+    
+* 将相似的任务或者代码封装到函数中，供其他地方调用
+    
+
+​
+
+第一种格式
+
+```shell
+name()
+{
+	command
+}
+```
+
+第二种格式
+
+```shell
+function name
+{
+	command
+}
+```
+
+* 直接使用函数名调用，可以将其想象成 shell 中的一条命令
+    
+* 函数内部可以直接使用参数$1,$2$n
+    
+* 函数调用： function\_name $1 $2
+    
+
+​
+
+```shell
+ps -ef | grep nginx | grep -v grep
+```
+
+## **向函数传递参数**
+
+```shell
+function name
+{
+	echo "Hello $1"
+}
+```
+
+## **函数的返回值**
+
+使用 return 返回值
+
+* 使用 return 返回值只能返回 1-255 的整数
+    
+* 函数使用 return 返回值，通常只是用来供其他地方调用获取状态，因此通常仅返回 0 或 1；0 表示成功，1 表示失败
+    
+
+​
+
+使用 echo 返回值
+
+* 使用 echo 可以返回任何字符串结果
+    
+* 通常用于返回数据，比如一个字符串值或者列表值
+    
+
+​
+
+## **全部变量和局部变量**
+
+全局变量
+
+* 不做特殊生命，shell 中变量都是全局变量
+    
+* Tips 大型脚本程序中函数慎用全局变量
+    
+
+局部变量
+
+* 定义变量时，使用 local 关键字
+    
+* 函数内和外若存在同名的变量，则函数内部变量覆盖外部变量
+    
+
+​
+
+## **函数库**
+
+为什么要定义函数库
+
+* 经常使用的重读代码封装成函数文件
+    
+* 一般不直接执行，而是通过其他脚本调用
+    
+
+​
+
+经验之谈
+
+* 库文件名的后缀是任意的，但一般使用.lib
+    
+* 库文件通常没有可执行的权限的
+    
+* 库文件无需和脚本在拥挤目录，秩序在脚本引用时指定
+    
+* 第一行一般使用#!/bin/echo， 输出警告信息，避免用户执行
+    
+
+​
+
+# **Shell 编程中的常用工具**
+
+## **文件查找 find 命令**
+
+find 命令语法格式 `find [路径] [选项] [操作]`​
+
+选项参数对照表
+
+![image.png](https://static.ziying.site/yuque_img_upload/2139f0cb-a143-36cc-ac89-55548075d31b.png align="left")
+
+![image.png](https://static.ziying.site/yuque_img_upload/4c890610-7423-3081-9f31-a822ad0554bb.png align="left")
+
+```javascript
+find命令总结：
+
+	常用选项：
+
+		-name			查找/etc目录下以conf结尾的文件	find /etc -name '*conf'
+		-iname			查找当前目录下文件名为aa的文件，不区分大小写	find . -iname aa
+		-user			查找文件属主为hdfs的所有文件	find . -user hdfs
+		-group			查找文件属组为yarn的所有文件	find . -group yarn
+		-type
+
+			f		文件				find . -type f
+			d		目录				find . -type d
+			c		字符设备文件		find . -type c
+			b		块设备文件			find . -type b
+			l		链接文件			find . -type l
+			p		管道文件			find . -type p
+
+
+		-size
+
+			-n		小于大小n的文件
+			+n		大于小于n的文件
+
+			例子1：查找/etc目录下小于10000字节的文件		find /etc -size -10000c
+			例子2：查找/etc目录下大于1M的文件				find /etc -size +1M
+
+		-mtime
+
+			-n		n天以内修改的文件
+			+n		n天以外修改的文件
+			n		正好n天修改的文件
+
+			例子1：查找/etc目录下5天之内修改且以conf结尾的文件	find /etc -mtime -5 -name '*.conf'
+			例子2：查找/etc目录下10天之前修改且属主为root的文件	find /etc -mtime +10 -user root
+
+		-mmin
+
+			-n		n分钟以内修改的文件
+			+n		n分钟以外修改的文件
+
+			例子1：查找/etc目录下30分钟之前修改的文件		find /etc -mmin +30
+			例子2：查找/etc目录下30分钟之内修改的目录		find /etc -mmin -30 -type d
+
+		-mindepth n		表示从n级子目录开始搜索
+
+			例子：在/etc下的3级子目录开始搜索		find /etc -mindepth 3
+
+		-maxdepth n		表示最多搜索到n级子目录
+
+			例子1：在/etc下搜索符合条件的文件，但最多搜索到2级子目录		find /etc -maxdepth 3 -name '*.conf'
+			例子2：
+				find ./etc/ -type f -name '*.conf' -size +10k -maxdepth 2
+
+
+
+
+	了解选项：
+
+		-nouser		查找没有属主的用户
+
+			例子：find . -type f -nouser
+
+		-nogroup	查找没有属组的用户
+
+			例子：find . -type f -nogroup
+
+		-perm
+
+			例子：find . -perm 664
+
+		-prune
+
+			通常和-path一起使用，用于将特定目录排除在搜索条件之外
+			例子1：查找当前目录下所有普通文件，但排除test目录
+				find . -path ./etc -prune -o -type f
+			例子2：查找当前目录下所有普通文件，但排除etc和opt目录
+				find . -path ./etc -prune -o -path ./opt -prune -o -type f
+			例子3：查找当前目录下所有普通文件，但排除etc和opt目录，但属主为hdfs
+				find . -path ./etc -prune -o -path ./opt -prune -o -type f -a -user hdfs
+			例子4：查找当前目录下所有普通文件，但排除etc和opt目录，但属主为hdfs，且文件大小必须大于500字节
+				find . -path ./etc -prune -o -path ./opt -prune -o -type f -a -user hdfs -a -size +500c
+
+		-newer file1
+
+			例子：find /etc -newer a
+
+	操作：
+
+
+		-print		打印输出
+
+		-exec		对搜索到的文件执行特定的操作，格式为-exec 'command' {} \;
+
+			例子1：搜索/etc下的文件(非目录)，文件名以conf结尾，且大于10k，然后将其删除
+
+				find ./etc/ -type f -name '*.conf' -size +10k -exec rm -f {} \;
+
+			例子2：将/var/log/目录下以log结尾的文件，且更改时间在7天以上的删除
+
+				find /var/log/ -name '*.log' -mtime +7 -exec rm -rf {} \;
+
+			例子3：搜索条件和例子1一样，只是不删除，而是将其复制到/root/conf目录下
+
+				find ./etc/ -size +10k -type f -name '*.conf' -exec cp {} /root/conf/ \;
+
+		-ok			和exec功能一样，只是每次操作都会给用户提示
+
+	逻辑运算符：
+
+		-a			与
+		-o			或
+		-not|!		非
+
+		例子1：查找当前目录下，属主不是hdfs的所有文件
+
+			find . -not -user hdfs 	|	find . ! -user hdfs
+
+		例子2：查找当前目录下，属主属于hdfs，且大小大于300字节的文件
+
+			find . -type f -a -user hdfs -a -size +300c
+
+		例子3：查找当前目录下的属主为hdfs或者以xml结尾的普通文件
+
+			find . -type f -a \( -user hdfs -o -name '*.xml' \)
+
+```
+
+## **常用的查找命令**
+
+find、locate、whereis 和 which 总结及使用场景分析​
+
+locate 命令介绍
+
+* 文件查找命令，所属软件包 mlocate
+    
+* 不同于 find 命令是在整块磁盘中搜索，locate 命令是在数据库文件中查找
+    
+* find 是默认全部匹配，locate 则是默认部分匹配
+    
+
+​
+
+updatedb 命令
+
+* 用户更新/var/lib/mlocate/mlocate.db
+    
+* 所使用配置文件/etc/updatedb.conf
+    
+* 改命令在后台 cron 计划中定期执行
+    
+
+​
+
+whereis 命令
+
+* 作用：查找某个命令的二进制程序文件、帮助文档、源代码文件
+    
+
+![image.png](https://static.ziying.site/yuque_img_upload/8155c960-b5d9-358d-b7bf-710d58f58318.png align="left")
+
+which 命令
+
+* 作用：今查找二进制文件
+    
+
+![image.png](https://static.ziying.site/yuque_img_upload/5ae5f434-f856-3581-b038-0a76fe7cc451.png align="left")
+
+各个命令使用场景的推荐
+
+| 命令 | 适用场景 | 优缺点 |
+| --- | --- | --- |
+| find | 查找某一类文件，比如文件名部分一致 | 功能强大，速度慢 |
+| locate | 只能查找单个文件 | 功能单一，速度快 |
+| whereis | 查找程序的可执行文件、帮助文档 | 不常用 |
+| which | 只查找程序的可执行文件 | 常用语查找程序的绝对路径 |
+
+# **grep 和 egrep**
+
+1. grep \[option\] \[pattern\] \[file1,file2...\]
+    
+2. command | grep \[option\] \[pattern\]
+    
+
+![image.png](https://static.ziying.site/yuque_img_upload/513c756b-f071-3a13-9468-c35e7df42ef6.png align="left")
+
+不常用
+
+![image.png](https://static.ziying.site/yuque_img_upload/8a1bdbad-5277-3700-95b0-ef4804a9bd8c.png align="left")
+
+# **sed**
+
+sed （stream editor），流编辑器。对标准输出或文件逐行进行处理​
+
+语法格式
+
+* `stdout | sed [option] "pattern command"`
+    
+* `sed [option] "pattern command" file`
+    
+
+sed 选项
+
+![image.png](https://static.ziying.site/yuque_img_upload/298340e6-7a0b-3e92-b919-643bb57d495f.png align="left")
+
+## **sed 中 pattern 详解**
+
+![image.png](https://static.ziying.site/yuque_img_upload/071ed61a-de40-318c-9d15-2b404a28aa17.png align="left")
+
+## **sed 中的编辑命令详解**
+
+| 类别 | 编辑命令 | 含义 |
+| --- | --- | --- |
+| 查询 | p | 打印 |
+| 新增 | a | 行后追加 |
+|  | i | 行前追加 |
+|  | r | 外部文件读入，行后追加 |
+|  | w | 匹配行写入外部文件 |
+| 删除 | d | 删除 |
+| 修改 | s/old/new | 将行内第一个 old 换成 new |
+|  | s/old/new/g | 将行内全部 old 更换为 new |
+|  | s/old/new/2 | 将行内前两个 old 更换成 new |
+|  | s/old/new/ig | 将行内的 old 全部更换为 new，忽略大小写 |
+
+`&` 和 `\1` 都可以代表反向引用，`\1`需要将前面匹配到的区域用括号括起来​
+
+## **利用 sed 删除特定的内容**
+
+![image.png](https://static.ziying.site/yuque_img_upload/178fd631-3392-3838-b3bb-f08c836aa6c7.png align="left")
+
+## **利用 sed 修改文件内容**
+
+![image.png](https://static.ziying.site/yuque_img_upload/c49cb867-1529-38ce-9a09-dcb357d57919.png align="left")
+
+# **awk**
+
+简介：awk 是一个文本处理工具，通常用于处理数据并生成结果报告
+
+awk 的工作模式
+
+![image.png](https://static.ziying.site/yuque_img_upload/2b27e076-bf47-35fe-bb8d-d7fee7a3af11.png align="left")
+
+语法格式：
+
+* `awk 'BEGIN{}parrern{commands}END{}' file_name`
+    
+* `standard output | awk 'BEGIN{}parttern{commands}END{}'`
+    
+
+​
+
+![image.png](https://static.ziying.site/yuque_img_upload/b0588745-7b0b-3b0c-b131-1d193dbf9eb5.png align="left")
+
+## **awk 的内置变量**
+
+![image.png](https://static.ziying.site/yuque_img_upload/6c8917c5-d043-339d-8e42-90563ef8e898.png align="left")
+
+![image.png](https://static.ziying.site/yuque_img_upload/7e758be4-f309-3757-be2a-3cb27454fc81.png align="left")
+
+## **awk 的格式化输出**
+
+![image.png](https://static.ziying.site/yuque_img_upload/2bccb5f1-48c1-3920-887a-12d797adcc54.png align="left")
+
+![image.png](https://static.ziying.site/yuque_img_upload/6c002390-0cf7-3583-8542-b8b16f696e53.png align="left")
+
+## **awk 模式匹配的两种用法**
+
+* RegExp
+    
+* 关系运算符匹配
+    
+
+![image.png](https://static.ziying.site/yuque_img_upload/45151cb8-4568-307c-8426-65c5b72ade59.png align="left")
+
+![image.png](https://static.ziying.site/yuque_img_upload/09c93733-66f9-3994-943f-9be3a5a34c67.png align="left")
+
+## **awk 动作表达式中的算数运算符**
+
+![image.png](https://static.ziying.site/yuque_img_upload/2ce00e0a-05f6-3179-902f-186abea94963.png align="left")
+
+## **awk 中条件语句**
+
+![image.png](https://static.ziying.site/yuque_img_upload/7ea8c793-49ef-35c5-bb8b-112e4b8f248d.png align="left")
+
+![image.png](https://static.ziying.site/yuque_img_upload/559ab243-5f56-3335-a093-2c48ebe6affc.png align="left")
+
+## **awk 中的字符串函数**
+
+![image.png](https://static.ziying.site/yuque_img_upload/9c23196d-fec5-3144-b980-a2dcd78669e1.png align="left")
+
+![image.png](https://static.ziying.site/yuque_img_upload/6ea18b9f-7fbf-31db-9b0d-66da449d84eb.png align="left")
+
+## **awk 选项总结**
+
+![image.png](https://static.ziying.site/yuque_img_upload/b4f5a4a7-a7c3-3d55-8500-a9b1a6547f78.png align="left")
+
+## **awk 中数组中的用法**
+
+shell 中数组的用法
+
+![image.png](https://static.ziying.site/yuque_img_upload/6f9f8d28-7366-3cda-b40a-70ee85317721.png align="left")
+
+![image.png](https://static.ziying.site/yuque_img_upload/d23ca4be-3964-398e-a673-45cf4e4626ca.png align="left")
