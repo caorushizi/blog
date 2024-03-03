@@ -3,6 +3,7 @@ title: "React 基础回顾"
 datePublished: Sun Mar 03 2024 16:30:08 GMT+0000 (Coordinated Universal Time)
 cuid: cltbqa7ng000508l6d4il9tgc
 slug: react
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1709484624234/df5ad02b-b4ea-448c-a21a-2d030663fd84.jpeg
 
 ---
 
