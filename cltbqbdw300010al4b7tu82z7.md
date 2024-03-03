@@ -3,6 +3,7 @@ title: "VirtualDOM 及 Diff 算法"
 datePublished: Sun Mar 03 2024 16:31:02 GMT+0000 (Coordinated Universal Time)
 cuid: cltbqbdw300010al4b7tu82z7
 slug: virtualdom-diff
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1709484673374/97e70ca1-368b-478d-b444-34e35d345c09.png
 
 ---
 
