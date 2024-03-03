@@ -3,6 +3,7 @@ title: "Vuex 数据流管理及Vue.js 服务端渲染（SSR）"
 datePublished: Sun Mar 03 2024 16:28:34 GMT+0000 (Coordinated Universal Time)
 cuid: cltbq878400000akydjhu3omj
 slug: vuex-vuejs-ssr
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1709484415650/377c15eb-33cf-4f13-acf5-78600e9dcacf.png
 
 ---
 
