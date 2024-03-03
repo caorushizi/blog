@@ -3,6 +3,7 @@ title: "面试必备 Vue React Webpack 全掌握"
 datePublished: Sun Mar 03 2024 16:33:21 GMT+0000 (Coordinated Universal Time)
 cuid: cltbqecgu00040al8anfl16id
 slug: vue-react-webpack
+cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1709484854398/3f67bf2b-4fb8-486c-853d-05ba81385963.png
 
 ---
 
