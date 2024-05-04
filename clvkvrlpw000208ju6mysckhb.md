@@ -5,6 +5,7 @@ seoDescription: "Learn about the essential basics of programming: computer archi
 datePublished: Mon Apr 29 2024 11:32:57 GMT+0000 (Coordinated Universal Time)
 cuid: clvkvrlpw000208ju6mysckhb
 slug: 57yw56il5bf5ash5z656ga77yaioiuoeeulacuue7hoaikowoneqhuoageatjes9noezue7noageiuoeeulacuue9kee7na
+ogImage: https://cdn.hashnode.com/res/hashnode/image/upload/v1714830291175/5e8d60e2-3e3a-4b42-989a-9ec522705cec.webp
 
 ---
 
