@@ -1,6 +1,6 @@
 ---
 title: "Vue.js + Vuex + TypeScript 实战项目开发与项目优化"
-datePublished: Sun Mar 03 2024 16:31:26 GMT+0000 (Coordinated Universal Time)
+datePublished: 2024-03-03T16:31:26.101Z
 cuid: cltbqbvro00010aky8fk97z28
 slug: vuejs-vuex-typescript
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1709484694541/7a2419b0-341e-4a8c-b48d-1fe6eb89731d.png
