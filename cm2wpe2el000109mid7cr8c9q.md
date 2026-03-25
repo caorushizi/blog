@@ -1,6 +1,6 @@
 ---
 title: "为什么 Github Contributions 绿色变成黄色？"
-datePublished: Thu Oct 31 2024 02:45:39 GMT+0000 (Coordinated Universal Time)
+datePublished: 2024-10-31T02:45:39.117Z
 cuid: cm2wpe2el000109mid7cr8c9q
 slug: github-contributions
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1730342662412/ec2f7c6d-9272-4ef7-af5c-92c0fe52062d.png
