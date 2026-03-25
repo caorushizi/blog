@@ -1,6 +1,6 @@
 ---
 title: "云存储客户端(1) 基础环境搭建"
-datePublished: Sun Mar 03 2024 16:29:41 GMT+0000 (Coordinated Universal Time)
+datePublished: 2024-03-03T16:29:41.203Z
 cuid: cltbq9mtu000108if6a5vezf8
 slug: 1
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1709484572263/d5a67e9e-c4f3-4dfb-a550-013e3373e321.png
