@@ -1,6 +1,6 @@
 ---
 title: "掌握shell脚本编程 进阶Linux高手"
-datePublished: Sun Mar 03 2024 16:32:08 GMT+0000 (Coordinated Universal Time)
+datePublished: 2024-03-03T16:32:08.377Z
 cuid: cltbqcse100030aky5fxl5d6p
 slug: shell-linux
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1709484795134/1955cc5f-5f46-4172-bf68-0deb7ec42b90.png
