@@ -1,6 +1,6 @@
 ---
 title: "React 设计原理解密及核心源码解读"
-datePublished: Sun Mar 03 2024 16:30:29 GMT+0000 (Coordinated Universal Time)
+datePublished: 2024-03-03T16:30:29.586Z
 cuid: cltbqao5t000608l6fuyqgpjc
 slug: react-1
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1709484646588/54e71373-0e74-407f-8c40-e2bad92736f7.jpeg
