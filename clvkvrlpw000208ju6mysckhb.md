@@ -2,7 +2,7 @@
 title: "编程必备基础： 计算机组成原理、操作系统、计算机网络"
 seoTitle: "计算机基础知识"
 seoDescription: "Learn about the essential basics of programming: computer architecture, operating systems, and computer networks"
-datePublished: Mon Apr 29 2024 11:32:57 GMT+0000 (Coordinated Universal Time)
+datePublished: 2024-04-29T11:32:57.908Z
 cuid: clvkvrlpw000208ju6mysckhb
 slug: 57yw56il5bf5ash5z656ga77yaioiuoeeulacuue7hoaikowoneqhuoageatjes9noezue7noageiuoeeulacuue9kee7na
 cover: https://cdn.hashnode.com/res/hashnode/image/stock/unsplash/n8Qb1ZAkK88/upload/9378fbcc0a46c108e62e7460d3a95baa.jpeg
