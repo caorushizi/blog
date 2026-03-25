@@ -1,6 +1,6 @@
 ---
 title: "函数式编程与JS异步编程、手写Promise"
-datePublished: Sun Mar 03 2024 16:24:51 GMT+0000 (Coordinated Universal Time)
+datePublished: 2024-03-03T16:24:51.378Z
 cuid: cltbq3f7600000al18f9n1oov
 slug: jspromise
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1709484206532/61c79930-efab-4b99-bf6e-c8539b5e1edf.png
