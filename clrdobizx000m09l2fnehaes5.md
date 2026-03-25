@@ -1,6 +1,6 @@
 ---
 title: "Python数据分析入门"
-datePublished: Sun Jan 14 2024 15:51:17 GMT+0000 (Coordinated Universal Time)
+datePublished: 2024-01-14T15:51:17.997Z
 cuid: clrdobizx000m09l2fnehaes5
 slug: python-1
 cover: https://cdn.hashnode.com/res/hashnode/image/upload/v1705247399408/d6496421-4e3d-42d8-af87-3908147802f6.webp
